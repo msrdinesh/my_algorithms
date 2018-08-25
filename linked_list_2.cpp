@@ -11,6 +11,10 @@ void Insert(int,int);
 void print();
 void Delete(int);
 void reverse();
+void Print(struct Node*);//This is printing using recursion
+void Reverse_Print(struct Node*);
+void Reverse(struct Node*);
+void print();
 
 int main()
 {
@@ -29,6 +33,15 @@ int main()
     reverse();
     print();
     cout<<endl;
+    Print(head);//print the list usig recursion
+    cout<<endl;
+    Reverse_Print(head);
+    cout<<endl;
+    Reverse(head);
+    print();
+    cout<<endl;
+
+
 }
 
 void Insert(int data,int n)
@@ -96,4 +109,38 @@ void reverse()
 		current = next;
 	}
 	head = prev;
+}
+
+void Print(struct Node *p)
+{
+	if(p==NULL)
+	{
+		return;
+	}
+	cout<<p->data<<" ";
+	Print(p->next);
+}
+
+void Reverse_Print(struct Node* p)
+{
+	if(p==NULL)
+	{
+		
+		return;
+	}
+	Reverse_Print(p->next);
+	cout<<(p->data)<<" ";
+}
+
+void Reverse(struct Node* p)
+{
+	if(p->next==NULL)
+	{
+		head = p;
+		return;
+	}
+    Reverse(p->next);
+    struct Node* q = p->next;
+    q->next = p;
+    p->next = NULL;
 }
