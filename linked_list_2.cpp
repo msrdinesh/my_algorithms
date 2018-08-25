@@ -10,6 +10,7 @@ struct Node* head=NULL;
 void Insert(int,int);
 void print();
 void Delete(int);
+void reverse();
 
 int main()
 {
@@ -24,7 +25,10 @@ int main()
 	cout<<endl;
 	Delete(4);
 	print();//printing the list
-   
+	cout<<endl;
+    reverse();
+    print();
+    cout<<endl;
 }
 
 void Insert(int data,int n)
@@ -77,4 +81,19 @@ void Delete(int n)
 
 	temp1->next = (temp1->next)->next;
 	delete temp1->next;
+}
+
+void reverse()
+{
+	struct Node *current,*prev,*next;
+	prev = NULL;
+	current = head;
+	while(current!=NULL)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	head = prev;
 }
