@@ -13,6 +13,9 @@ bstNode* getNewNode(int);
 bool Search(bstNode*,int);
 int findHeight(bstNode*);
 void levelOrder(bstNode*);
+void preOrder(bstNode*);
+void inOrder(bstNode*);
+void postOrder(bstNode*);
 int main()
 {
 	bstNode* root = NULL;
@@ -40,6 +43,10 @@ int main()
     cout<<"The height is: "<<findHeight(root)<<endl;
     cout<<"Traversing the tree in level order..."<<endl;
     levelOrder(root);
+    cout<<endl;
+    cout<<"Traversing the tree in in order"<<endl;
+    inOrder(root);
+
 
     return 0;
 }
@@ -129,6 +136,15 @@ int main()
 
   }
 
-
+  void inOrder(bstNode* root)
+  {
+  	if(root == NULL)
+  	{
+  		return;
+  	}
+  	cout<<root->data<<" ";
+  	inOrder(root->left);
+  	inOrder(root->right);
+    }
   
 
