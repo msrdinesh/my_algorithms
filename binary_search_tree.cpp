@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 struct bstNode
 {
@@ -11,6 +12,7 @@ bstNode* Insert(bstNode*,int);
 bstNode* getNewNode(int);
 bool Search(bstNode*,int);
 int findHeight(bstNode*);
+void levelOrder(bstNode*);
 int main()
 {
 	bstNode* root = NULL;
@@ -36,6 +38,9 @@ int main()
     }
 
     cout<<"The height is: "<<findHeight(root)<<endl;
+    cout<<"Traversing the tree in level order..."<<endl;
+    levelOrder(root);
+
     return 0;
 }
 
@@ -99,7 +104,30 @@ int main()
 
   	return max(leftHeight,rightHeight)+1;
   }
+  
+  void levelOrder(bstNode* root)
+  {
+  	queue<bstNode*>Q;//creating a queue of pointers to store the references of children of the specific node for level order traversal
+  	Q.push(root);//first pushed the root
+  	while(!Q.empty())//until the queue becomes empty
+  	{
+  		bstNode* current = Q.front();
+  		cout<<current->data<<" ";//print the current data
+  		if(current->left!=NULL)
+  		{
+  			Q.push(current->left);//pushing the left child of the current pointer if it is not empty
 
+  		}
+
+  		if(current->right!=NULL)
+  		{
+  			Q.push(current->right);//pushing the right child of the current pointer if it is not empty
+  		}
+  		Q.pop();//removing the current element
+  	}
+
+
+  }
 
 
   
